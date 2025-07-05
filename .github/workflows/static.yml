@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générateur de Défis Artistiques</title>
+  <style>
+    body {
+      font-family: 'Arial Rounded MT Bold', sans-serif;
+      background: #f7f3ef;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #4a3b47;
+    }
+    select, button {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #7b5ea7;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6a4f90;
+    }
+    .result {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Générateur de Défis Artistiques</h1>
+
+  <label for="category">Catégorie :</label>
+  <select id="category">
+    <option value="technique">Technique</option>
+    <option value="creatif">Créatif</option>
+    <option value="narratif">Narratif</option>
+    <option value="collectif">Collectif</option>
+    <option value="emotion">Émotion / Expression</option>
+  </select>
+
+  <label for="medium">Type d'art :</label>
+  <select id="medium">
+    <option value="dessin">Dessin</option>
+    <option value="peinture">Peinture</option>
+    <option value="aquarelle">Aquarelle</option>
+    <option value="sculpture">Sculpture</option>
+    <option value="textile">Textile / Couture</option>
+    <option value="photo">Photo / Collage</option>
+    <option value="libre">Libre</option>
+  </select>
+
+  <button onclick="generateChallenge()">🎲 Générer un défi</button>
+
+  <div class="result" id="challengeResult">Sélectionnez des options et cliquez pour générer un défi !</div>
+
+  <script>
+    const challenges = {
+      technique: [
+        "Utilise seulement 3 couleurs (sans noir ni blanc).",
+        "Crée une œuvre avec des formes géométriques uniquement.",
+        "Réalise un dessin sans lever ton outil du support.",
+        "Dessine avec ta main non dominante.",
+        "Fais une œuvre en moins de 5 minutes."
+      ],
+      creatif: [
+        "Fusionne deux animaux pour créer une créature inédite.",
+        "Transforme un objet quotidien en personnage.",
+        "Réinvente un conte célèbre dans un univers cyberpunk.",
+        "Crée un monstre effrayant mais gentil.",
+        "Imagine un monde où tout est à l’envers."
+      ],
+      narratif: [
+        "Illustre un moment juste après un événement dramatique.",
+        "Dessine une scène de rêve surréaliste.",
+        "Raconte une histoire à travers 3 vignettes.",
+        "Crée une carte d’un monde imaginaire.",
+        "Dessine une journée dans la vie d’un personnage bizarre."
+      ],
+      collectif: [
+        "Cadavre exquis avec d’autres artistes.",
+        "Redessinez tous la même scène dans différents styles.",
+        "Transforme le dessin de quelqu’un d’autre.",
+        "Pioche deux mots au hasard avec un ami et combine-les.",
+        "Réalisez un personnage à plusieurs : tête, corps, jambes."
+      ],
+      emotion: [
+        "Fais un autoportrait d’une émotion intense.",
+        "Exprime une émotion uniquement avec des couleurs et des formes.",
+        "Crée une œuvre inspirée par la nostalgie.",
+        "Dessine un souvenir important sans utiliser de visages.",
+        "Représente la joie comme un paysage."
+      ]
+    };
+
+    function generateChallenge() {
+      const category = document.getElementById('category').value;
+      const medium = document.getElementById('medium').value;
+      const list = challenges[category];
+      const randomIndex = Math.floor(Math.random() * list.length);
+      const challenge = list[randomIndex];
+
+      document.getElementById('challengeResult').innerHTML = `
+        <strong>Type :</strong> ${capitalize(medium)}<br>
+        <strong>Catégorie :</strong> ${capitalize(category)}<br><br>
+        <em>${challenge}</em>
+      `;
+    }
+
+    function capitalize(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+  </script>
+</body>
+</html>
