@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎨 Générateur de Défis Artistiques</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fdfdfd;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 2rem;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .defi {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Générateur de Défis Artistiques</h1>
+  <button onclick="genererDefi()">Tirer un défi</button>
+  <div class="defi" id="defi"></div>
+
+  <script>
+    const defis = [
+      "Dessine un animal imaginaire avec 3 yeux.",
+      "Peins une scène de nuit à la bougie.",
+      "Fais une sculpture en papier ou carton recyclé.",
+      "Dessine à l’encre sans lever ton crayon pendant 1 minute.",
+      "Peins en n'utilisant que 3 couleurs primaires.",
+      "Fais un autoportrait avec ta main non dominante.",
+      "Dessine un objet du quotidien comme s’il était vivant.",
+      "Crée une œuvre inspirée par un rêve.",
+      "Interprète une chanson en image.",
+      "Dessine sans utiliser de lignes droites."
+    ];
+
+    function genererDefi() {
+      const i = Math.floor(Math.random() * defis.length);
+      document.getElementById("defi").innerText = defis[i];
+    }
+  </script>
+</body>
+</html>
